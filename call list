@@ -1,0 +1,21 @@
+import json
+import datetime
+
+# Load the user data from the JSON file
+with open('user_data.json', 'r') as f:
+    user_data = json.load(f)
+
+# Store the user data in a dictionary
+user_id = input("Enter user ID: ")
+if user_id not in user_data:
+    user_data[user_id] = []
+
+# Add the current date and time to the user's call list
+now = datetime.datetime.now()
+user_data[user_id].append(str(now))
+
+# Save the updated user data to the JSON file
+with open('user_data.json', 'w') as f:
+    json.dump(user_data, f)
+
+print("User data saved successfully!")
